@@ -1,4 +1,6 @@
 from MyBoard_GameRules import GameRules
+from python_files.GPI import GPI
+from python_files.Juego import Juego
 from python_files.MyAdvancedFiles.MyGUI import MyGUI
 
 def str_sum(iterable):
@@ -64,16 +66,81 @@ def end_game(board):
     return 3
   return 0
 
-GatoGameRules = GameRules(3, 3, ' ', ['X'], ['O'], end_game, name="Gato")
+GatoGameRules = GameRules(3, 3, ' ', ['x'], ['o'], end_game, name="Gato")
+
+# GIT
+# oraculo de reglas
+def ReglasGato(llave,ficha):
+  jugadas_posibles = []
+  # regla: pone una "ficha" en cualquier casilla vacia
+  for indice in range(len(llave)):
+    if llave[indice] != ' ':
+      continue
+    jugadas_posibles.append(llave[:indice]+ficha+llave[indice+1:])
+  return jugadas_posibles
+
+# reglas jugador 1
+def ReglasGatoJugador1(llave):
+  return ReglasGato(llave,'x')
+
+# reglas jugador 2
+def ReglasGatoJugador2(llave):
+  return ReglasGato(llave,'o')
+
+
+# oraculo condicion de victoria
+def CondicionVictoriaGato(llave,palabra):
+  # gana cuando: forma una palabra en una de las siguientes lineas
+
+  # lineas horizontales
+  for fila in range(3):
+    if llave[fila*3:(fila+1)*3] == palabra:
+      return True
+
+  # lineas verticales
+  for columna in range(3):
+    if llave[columna]+llave[columna+3]+llave[columna+6] == palabra:
+      return True
+
+  # lineas diagonales
+  if llave[0]+llave[4]+llave[8] == palabra:
+    return True
+
+  if llave[2]+llave[4]+llave[6] == palabra:
+    return True
+
+  # no hay condicion de victoria
+  return False
+
+# condicion de victoria jugador 1
+def CondicionVictoriaGatoJ1(llave):
+    return CondicionVictoriaGato(llave,'xxx')
+
+# condicion de victoria jugador 2
+def CondicionVictoriaGatoJ2(llave):
+    return CondicionVictoriaGato(llave,'ooo')
+
+# Entrenar
+
+Gato = Juego(3,3,' '*9)
+Gato.cambiar_reglasJ1(ReglasGatoJugador1)
+Gato.cambiar_reglasJ2(ReglasGatoJugador2)
+Gato.cambiar_victoriaJ1(CondicionVictoriaGatoJ1)
+Gato.cambiar_victoriaJ2(CondicionVictoriaGatoJ2)
+
+figGato = {}
+
+Demo2 = GPI(Gato)
 
 
 def my_fun(board):
-  for i in range(board.n()):
-    for j in range(board.m()):
-      if board.board(i, j) == board.mt_sym():
-        sym = 'X' if board.is_player1_turn() else 'O'
-        new_board = board.create_next_board(i, j, sym)
-        return new_board
+  # for i in range(board.n()):
+  #   for j in range(board.m()):
+  #     if board.board(i, j) == board.mt_sym():
+  #       sym = 'X' if board.is_player1_turn() else 'O'
+  #       new_board = board.create_next_board(i, j, sym)
+  #       return new_board
+  return Demo2.play_a_board(board)
 
 
 a = MyGUI(GatoGameRules, my_fun)

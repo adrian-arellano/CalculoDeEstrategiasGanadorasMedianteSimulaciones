@@ -1,4 +1,4 @@
-SEPARATOR = '|'
+SEPARATOR = ''
 
 
 def tuple_mat(mat):
@@ -111,13 +111,20 @@ class MyBoard:
   def get_winner(self):
     return self.game_rules.end_game_fun(self)
 
+  @staticmethod
+  def from_llave_to_MyBoard(llave, game_rules):
+    print([[i * game_rules.m + j for j in range(game_rules.m)] for i in range(game_rules.n)])
+    matrix_board = [[llave[i * game_rules.m + j] for j in range(game_rules.m)] for i in range(game_rules.n)]
+    return MyBoard(game_rules=game_rules, matrix_board=matrix_board)
+
+
   def __str__(self):
     out = ''
     for lst in self.matrix_board:
       out += SEPARATOR
       for sym in lst:
         out += sym + SEPARATOR
-      out += "\n"
+      #out += "\n"
     return out
 
   def __eq__(self, other):

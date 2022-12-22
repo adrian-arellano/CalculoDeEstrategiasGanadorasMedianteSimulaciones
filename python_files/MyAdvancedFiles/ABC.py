@@ -1,6 +1,6 @@
 import random
 
-from MyBoard_GameRules import GameRules
+from MyBoard_GameRules import GameRules, MyBoard
 from python_files.MyAdvancedFiles.MyGUI import MyGUI
 
 def str_sum(iterable):
@@ -57,6 +57,8 @@ def end_game(board):
   return 0
 
 ABCGameRules = GameRules(5, 5, ' ', ['A', 'B', 'C'], ['A', 'B', 'C'], end_game, name="ABC")
+
+# print(MyBoard.from_llave_to_MyBoard('AAAAABBBBBCCCCC         A', ABCGameRules))
 
 
 def my_fun(board):

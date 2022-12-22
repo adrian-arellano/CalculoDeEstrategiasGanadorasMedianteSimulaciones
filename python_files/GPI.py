@@ -3,6 +3,7 @@ import numpy as np
 
 from python_files.Estimador import Estimador
 from python_files.MonteCarlo import MonteCarlo
+from python_files.MyAdvancedFiles.MyBoard_GameRules import MyBoard
 from python_files.Partida import Partida
 
 
@@ -24,6 +25,14 @@ class GPI:
 
     self.partida.agregar_jugada(self.estimador.tablero(jugada))
     self.jugador = 1 - self.jugador
+
+  def play_a_board(self, given_board):
+    llave = str(given_board)
+    nueva_llave = self.estimador.valor(llave)
+    game_rules = given_board.game_rules
+    matrix_board = MyBoard.from_llave_to_MyBoard(nueva_llave, game_rules)
+    return MyBoard(game_rules=game_rules, matrix_board=matrix_board)
+
 
   # simular resto de una partida
   def simular_partida(self, U, actualizar=False):
