@@ -33,6 +33,12 @@ class MyBoard:
   def mt_sym(self):
     return self.game_rules.mt_sym
 
+  def p1_sym_lst(self):
+    return self.game_rules.p1_sym_lst
+
+  def p2_sym_lst(self):
+    return self.game_rules.p2_sym_lst
+
   def board(self, i, j):
     return self.matrix_board[i][j]
 

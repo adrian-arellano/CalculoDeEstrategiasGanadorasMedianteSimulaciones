@@ -29,7 +29,7 @@ class MyGUI:
     self.delay = None
 
     # Creating important Matrices
-    self.button_matrix = [[None for _ in range(self.m())] for _ in range(self.m())]
+    self.button_matrix = [[None for _ in range(self.m())] for _ in range(self.n())]
     self.my_board = self.game_rules.empty_board()
 
     # Building Window
@@ -160,7 +160,7 @@ class MyGUI:
     return lambda: self.alternative_window_for(i, j)
 
   def alternative_window_for(self, i, j):
-    if self.get_turn_owner() != USER:
+    if (self.get_turn_owner() != USER) or self.game_ended:
       return
     root_2 = Toplevel(self.root)
     root_2.grab_set()  # No permite que se use la ventana principal.
