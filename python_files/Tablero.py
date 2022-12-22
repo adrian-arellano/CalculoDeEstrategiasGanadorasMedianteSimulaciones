@@ -1,6 +1,7 @@
 # guardar las posibles jugadas dado un tablero
 class Tablero:
   def __init__(self, llave_tablero, tableros_siguientes_posibles=[]):
+    self.jugadas_posibles_viables = None
     self.llave = llave_tablero
     self.tableros_de_origen = []
     self.jugadas_posibles = list(tableros_siguientes_posibles)

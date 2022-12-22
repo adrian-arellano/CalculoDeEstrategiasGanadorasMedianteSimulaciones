@@ -28,7 +28,7 @@ class GPI:
 
   def play_a_board(self, given_board):
     llave = str(given_board)
-    nueva_llave = self.estimador.valor(llave)
+    nueva_llave = self.estimador.tablero(llave).llaves_jugadas_posibles()[0]#self.estimador.valor(llave)
     game_rules = given_board.game_rules
     matrix_board = MyBoard.from_llave_to_MyBoard(nueva_llave, game_rules)
     return MyBoard(game_rules=game_rules, matrix_board=matrix_board)
