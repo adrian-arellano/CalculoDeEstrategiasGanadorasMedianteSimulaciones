@@ -1,6 +1,5 @@
-#from GameRules import GameRules
-
 SEPARATOR = '|'
+
 
 def tuple_mat(mat):
   return tuple(tuple(lst) for lst in mat)
@@ -27,8 +26,10 @@ class MyBoard:
 
   def n(self):
     return self.game_rules.n
+
   def m(self):
     return self.game_rules.m
+
   def mt_sym(self):
     return self.game_rules.mt_sym
 
@@ -126,12 +127,13 @@ class MyBoard:
   def __hash__(self):
     return hash((self.game_rules, self.matrix_board))
 
-#-----------------------------------------------------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------------------------------------------------
 
 from typing import Sequence, Callable
 
 
-#from python_files.MyAdvancedFiles.MyBoard import MyBoard
+# from python_files.MyAdvancedFiles.MyBoard import MyBoard
 
 
 class GameRules:
@@ -147,7 +149,6 @@ class GameRules:
     self.full_sym_lst = self.sym_lst.union([self.mt_sym])
     self.end_game_fun = end_game_fun
     self.name = name
-
 
   @staticmethod
   def valid_symbol(sym):
@@ -184,7 +185,7 @@ class GameRules:
     # p2_sym_lst
     if not GameRules.valid_symbol_list(p2_sym_lst, mt_sym=mt_sym):
       raise Exception(f"{report}: given 'p2_sym_lst' is not a collection, or one of the element in 'p2_sym_lst' is not "
-          f"a valid [non empty] symbol.\nInstead 'p2_sym_lst' is '{p2_sym_lst}'.")
+                      f"a valid [non empty] symbol.\nInstead 'p2_sym_lst' is '{p2_sym_lst}'.")
     # end_game_fun
     if not isinstance(end_game_fun, Callable):
       raise Exception(f"{report}: given 'end_game_fun' is not a function.\nInstead it is "

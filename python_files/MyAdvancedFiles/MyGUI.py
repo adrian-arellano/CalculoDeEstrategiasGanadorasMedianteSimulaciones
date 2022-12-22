@@ -12,6 +12,7 @@ USER = 2
 PRESS_COLOR = "#CBCBCB"
 NORMAL_COLOR = "#F0F0F0"
 
+
 class MyGUI:
   def __init__(self, game_rules, turn_fun):
     # Saving given data
@@ -79,14 +80,17 @@ class MyGUI:
     self.player1 = MACHINE
     self.mb1["bg"] = PRESS_COLOR
     self.pb1["bg"] = NORMAL_COLOR
+
   def mb2_fun(self):
     self.player2 = MACHINE
     self.mb2["bg"] = PRESS_COLOR
     self.pb2["bg"] = NORMAL_COLOR
+
   def pb1_fun(self):
     self.player1 = USER
     self.mb1["bg"] = NORMAL_COLOR
     self.pb1["bg"] = PRESS_COLOR
+
   def pb2_fun(self):
     self.player2 = USER
     self.mb2["bg"] = NORMAL_COLOR
@@ -98,14 +102,19 @@ class MyGUI:
     self.pb1["state"] = state
     self.pb2["state"] = state
     self.start_game_button["state"] = state
+
   def n(self):
     return self.game_rules.n
+
   def m(self):
     return self.game_rules.m
+
   def mt_sym(self):
     return self.game_rules.mt_sym
+
   def board(self, i, j):
     return self.my_board.board(i, j)
+
   def next_board(self, i, j, sym):
     self.my_board = self.my_board.create_next_board(i, j, sym)
 
@@ -188,6 +197,8 @@ class MyGUI:
         self.update_text("Player 1 Wins")
       elif cond == 2:
         self.update_text("Player 2 Wins")
+      elif cond == 3:
+        self.update_text("Tie: No one Wins")
 
   def next_turn(self):
     if self.current_turn == 1:

@@ -13,9 +13,10 @@ def ReglasTab42(llave):
   for indice in range(len(llave)):
     if llave[indice] != ' ':
       continue
-    jugadas_posibles.append(llave[:indice]+'1'+llave[indice+1:])
-    jugadas_posibles.append(llave[:indice]+'2'+llave[indice+1:])
+    jugadas_posibles.append(llave[:indice] + '1' + llave[indice + 1:])
+    jugadas_posibles.append(llave[:indice] + '2' + llave[indice + 1:])
   return jugadas_posibles
+
 
 # oraculo de condicion de victoria
 def CondicionVictoriaTab42(llave):
@@ -23,9 +24,7 @@ def CondicionVictoriaTab42(llave):
   return total == 4
 
 
-
-
-Tab42 = Juego(3,1,' '*3)
+Tab42 = Juego(3, 1, ' ' * 3)
 Tab42.cambiar_reglasJ1(ReglasTab42)
 Tab42.cambiar_reglasJ2(ReglasTab42)
 Tab42.cambiar_victoriaJ1(CondicionVictoriaTab42)
@@ -34,12 +33,9 @@ Tab42.cambiar_victoriaJ2(CondicionVictoriaTab42)
 Demo1 = GPI(Tab42)
 
 
-
-
-
 def AnimacionRed(frame):
-  graficar_red(Demo1.estimador,Demo1.partida)
-  Demo1.Iteracion(u[frame],U[frame])
+  graficar_red(Demo1.estimador, Demo1.partida)
+  Demo1.Iteracion(u[frame], U[frame])
 
   n = 10
   np.random.seed(42)

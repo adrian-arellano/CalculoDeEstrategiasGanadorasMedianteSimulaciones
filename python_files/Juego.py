@@ -1,28 +1,31 @@
 import numpy as np
 
+
 ### funcion de interfaz
 
-def jugada_a_llave(columnas,filas,tablero,jugada):
-  if len(tablero)!= filas*columnas:
+def jugada_a_llave(columnas, filas, tablero, jugada):
+  if len(tablero) != filas * columnas:
     return ''
   try:
-    y = int(jugada[:jugada.find(',')])-1
+    y = int(jugada[:jugada.find(',')]) - 1
   except:
     return ''
   if y < 0 or y >= filas:
     return ''
   try:
-    x = int(jugada[jugada.find(',')+1:jugada.find(',',jugada.find(',')+1)])-1
+    x = int(jugada[jugada.find(',') + 1:jugada.find(',', jugada.find(',') + 1)]) - 1
   except:
     return ''
   if x < 0 or x >= columnas:
     return ''
-  return tablero[:columnas*y+x]+jugada[-1]+tablero[columnas*y+x+1:]
+  return tablero[:columnas * y + x] + jugada[-1] + tablero[columnas * y + x + 1:]
+
 
 ### test llaves de jugadas
 
-assert jugada_a_llave(3,1,'   ','1,1,1') == '1  '
-assert jugada_a_llave(4,3,' '*12,'2,3,1') == '      1     '
+assert jugada_a_llave(3, 1, '   ', '1,1,1') == '1  '
+assert jugada_a_llave(4, 3, ' ' * 12, '2,3,1') == '      1     '
+
 
 class Juego:
   def __init__(self, columnas=1, filas=1, llave_tablero_inicial=' '):

@@ -39,9 +39,7 @@ def CondicionVictoriaABC(llave):
   return False
 
 
-
-
-ABC = Juego(5,5,' '*25)
+ABC = Juego(5, 5, ' ' * 25)
 ABC.cambiar_reglasJ1(ReglasABC)
 ABC.cambiar_reglasJ2(ReglasABC)
 ABC.cambiar_victoriaJ1(CondicionVictoriaABC)
@@ -49,15 +47,12 @@ ABC.cambiar_victoriaJ2(CondicionVictoriaABC)
 
 Demo3 = GPI(ABC)
 
-
-
 n = 50000
 np.random.seed(123456)
-U = np.random.rand(n,25)
+U = np.random.rand(n, 25)
 u = np.random.rand(n)
 
 for i in range(n):
-  Demo3.Iteracion(u[i],U[i])
-
+  Demo3.Iteracion(u[i], U[i])
 
 print(len(Demo3.estimador.tableros))

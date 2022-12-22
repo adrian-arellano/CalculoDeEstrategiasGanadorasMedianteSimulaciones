@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 
+
 def niveles_tableros(estimador, llave_casilla_vacia=' '):
   niveles = {}
 
